@@ -9,7 +9,8 @@
 >     convertendo o tempo em horas e exibindo o resultado na tag <p> com o ID "output".
 >
 >
-
+>
+> ---
 >#### ***✍️Exemplo de código HTML***
 > ``` HTML
 >     <form>
@@ -22,18 +23,20 @@
 >     <p id="output">O resultado será exibido aqui.</p>
 > ```
 >
-
->#### ***✍️Exemplo de código SCSS***
-``` SCSS
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-```
 >
-
+> ---
+>#### ***✍️Exemplo de código SCSS***
+> ``` SCSS
+> form {
+>     display: flex;
+>     flex-direction: column;
+>     align-items: center;
+> }
+>
+> ```
+>
+>
+> ---
 >#### ***✍️Exemplo de código JS***
 > ``` JS
 > const convertButton = document.querySelector("#convert");
