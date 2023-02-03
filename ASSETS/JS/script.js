@@ -2,6 +2,8 @@ const convertButton = document.querySelector("#convert");
 const timeInput = document.querySelector("#time");
 const output = document.querySelector("#output");
 
+Inputmask("99:99").mask(timeInput);
+
 convertButton.addEventListener("click", function() {
   const time = timeInput.value.split(":");
   const minutes = parseInt(time[0]);
