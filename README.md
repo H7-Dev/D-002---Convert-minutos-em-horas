@@ -114,4 +114,64 @@
 > });
 >
 > ```
+---
+> ### **🏁❗ 01.03 function convertTime(timeInput)**
+> #### **Descrição**
+>
+>      Neste exemplo, a lógica de conversão foi movida para uma função chamada convertTime(). Esta função é chamada quando o botão com o ID "convert" é clicado, graças ao event listener adicionado na última linha do código.
+>      Além dissso, a variável "timeInput" é passada como parâmetro para a função "convertTime" quando ela é chamada a partir do event listener no botão "convert".
+>
+>   #### 👉  Resultado (Imagem)
+>    ![image](https://user-images.githubusercontent.com/93455937/216657928-322b62b4-fb9a-4c42-9a7c-c06e9dfcd5e4.png)
+>#### ***✍️Exemplo de código JS***
+> ``` JS
+> const convertButton = document.querySelector("#convert");
+> const timeInput = document.querySelector("#time");
+> const precisionRadios = document.querySelectorAll('input[name="precision"]');
+> const output = document.querySelector("#output");
+>
+> Inputmask("99:99").mask(timeInput);
+>
+> function convertTime(timeInput) {
+>   const time = timeInput.value.split(":");
+>   const minutes = parseInt(time[0]);
+>   const seconds = parseInt(time[1]);
+>   const totalSeconds = minutes * 60 + seconds;
+>
+>   let precision = 0;
+>   for (let i = 0; i < precisionRadios.length; i++) {
+>     if (precisionRadios[i].checked) {
+>       precision = parseInt(precisionRadios[i].value);
+>       break;
+>     }
+>   }
+>
+>   const hours = Math.floor(totalSeconds / 3600);
+>   const remainingSeconds = totalSeconds % 3600;
+>   const remainingMinutes = Math.floor(remainingSeconds / 60);
+>   const remainingSecondsAfterMinutes = Math.round(remainingSeconds % 60);
+>
+>   let result = "";
+>   if (hours > 0) {
+>     result += `${hours} hora${hours > 1 ? "s" : ""}`;
+>   }
+>   if (remainingMinutes > 0) {
+>     result += ` ${remainingMinutes} minuto${remainingMinutes > 1 ? "s" : ""}`;
+>   }
+>   if (remainingSecondsAfterMinutes > 0) {
+>     result += ` ${remainingSecondsAfterMinutes} segundo${remainingSecondsAfterMinutes > 1 ? "s" : ""}`;
+>   }
+>
+>   output.textContent = result;
+> }
+>
+> convertButton.addEventListener("click", function () {
+>   convertTime(timeInput);
+> });
+>
+>
+>   output.textContent = result;
+> });
+>
+```
 >

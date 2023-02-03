@@ -5,12 +5,11 @@ const output = document.querySelector("#output");
 
 Inputmask("99:99").mask(timeInput);
 
-convertButton.addEventListener("click", function() {
+function convertTime(timeInput) {
   const time = timeInput.value.split(":");
   const minutes = parseInt(time[0]);
   const seconds = parseInt(time[1]);
   const totalSeconds = minutes * 60 + seconds;
-  const hours = totalSeconds / 3600;
 
   let precision = 0;
   for (let i = 0; i < precisionRadios.length; i++) {
@@ -19,5 +18,26 @@ convertButton.addEventListener("click", function() {
       break;
     }
   }
-  output.textContent = `${hours.toFixed(precision)} horas`;
+
+  const hours = Math.floor(totalSeconds / 3600);
+  const remainingSeconds = totalSeconds % 3600;
+  const remainingMinutes = Math.floor(remainingSeconds / 60);
+  const remainingSecondsAfterMinutes = Math.round(remainingSeconds % 60);
+
+  let result = "";
+  if (hours > 0) {
+    result += `${hours} hora${hours > 1 ? "s" : ""}`;
+  }
+  if (remainingMinutes > 0) {
+    result += ` ${remainingMinutes} minuto${remainingMinutes > 1 ? "s" : ""}`;
+  }
+  if (remainingSecondsAfterMinutes > 0) {
+    result += ` ${remainingSecondsAfterMinutes} segundo${remainingSecondsAfterMinutes > 1 ? "s" : ""}`;
+  }
+
+  output.textContent = result;
+}
+
+convertButton.addEventListener("click", function () {
+  convertTime(timeInput);
 });
